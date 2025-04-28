@@ -1,22 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 
 <head>
     <meta charset="utf-8">
-    <title>Marker AR + Animation</title>
+    <title>HiroマーカーARテスト</title>
     <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
     <script src="https://cdn.rawgit.com/AR-js-org/AR.js/3.3.2/aframe/build/aframe-ar.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/aframe-extras@6.1.1/dist/aframe-extras.min.js"></script>
 </head>
 
-<body style="margin: 0; overflow: hidden;">
-    <a-scene vr-mode-ui="enabled: false" embedded arjs="sourceType: webcam; debugUIEnabled: true;">
-        <!-- ① ここでモデルをプリロード -->
+<body style="margin:0;overflow:hidden;">
+    <!-- デバッグ用に画面にマーカーを埋め込み -->
+    <img src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js@master/data/images/HIRO.png" alt="Hiroマーカー" style="position:absolute;top:1rem;left:1rem;width:120px;z-index:10;" />
+
+    <a-scene embedded vr-mode-ui="enabled:false" arjs="sourceType:webcam;debugUIEnabled:true;">
         <a-assets>
             <a-asset-item id="charModel" src="tasuke-jumping.glb"></a-asset-item>
         </a-assets>
 
-        <!-- ② マーカー認識でモデルを出す -->
+        <!-- Hiroマーカーを認識したらモデルを表示 -->
         <a-marker preset="hiro">
             <a-entity gltf-model="#charModel" animation-mixer scale="0.5 0.5 0.5"></a-entity>
         </a-marker>
